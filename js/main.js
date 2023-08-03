@@ -16,20 +16,20 @@ var min3deg = document.getElementById('min3deg');
 (function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
+    if(navigator.geolocation.getCurrentPosition(showPosition) == null){
+      getForecast('cairo')
+    }
   }
 })();
 
 function showPosition(position) {
-  var latitude=position.coords.latitude;
-  var longitude=position.coords.longitude;
+  latitude=position.coords.latitude;
+  longitude=position.coords.longitude;
   // console.log("Latitude: " + latitude)
   // console.log("Longitude: " + longitude);
   position = `${latitude},${longitude}`
   getForecast(position);
 }
-
 
 async function getForecast (temp){
 
