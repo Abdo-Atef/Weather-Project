@@ -24,8 +24,8 @@ var min3deg = document.getElementById('min3deg');
 function showPosition(position) {
   var latitude=position.coords.latitude;
   var longitude=position.coords.longitude;
-  console.log("Latitude: " + latitude)
-  console.log("Longitude: " + longitude);
+  // console.log("Latitude: " + latitude)
+  // console.log("Longitude: " + longitude);
   position = `${latitude},${longitude}`
   getForecast(position);
 }
