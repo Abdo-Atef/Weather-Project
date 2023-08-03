@@ -12,23 +12,24 @@ var max2deg = document.getElementById('max2deg');
 var max3deg = document.getElementById('max3deg');
 var min2deg = document.getElementById('min2deg');
 var min3deg = document.getElementById('min3deg');
-// var latitude=0;
-// var longitude=0;
-// var pos = latitude +","+longitude;
 
-// function getLocation() {
-//   if (navigator.geolocation) {
-//      navigator.geolocation.getCurrentPosition(showPosition);
-//   } else { 
-//     console.log("Geolocation is not supported by this browser.");
-//   }
-// }
-//   function showPosition(position) {
-//   latitude = position.coords.latitude;
-//   longitude = position.coords.longitude
-//   console.log("Latitude: " + latitude);  
-//   console.log("Longitude: " + longitude);
-// }
+(function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+})();
+
+function showPosition(position) {
+  var latitude=position.coords.latitude;
+  var longitude=position.coords.longitude;
+  console.log("Latitude: " + latitude)
+  console.log("Longitude: " + longitude);
+  position = `${latitude},${longitude}`
+  getForecast(position);
+}
+
 
 async function getForecast (temp){
 
@@ -36,7 +37,7 @@ async function getForecast (temp){
   var result = await apiResponse.json();
   // console.log(result);
   // console.log(result.current);
-  cityName.innerHTML = result.location.name;
+  cityName.innerHTML = `${result.location.country} - ${result.location.region} - ${result.location.name}`;
   todayImg.innerHTML = `<img id="todayImg" src="${result.current.condition.icon}" style="width: 90px;height: 90px;">`;
   imgDay2.innerHTML = `<img src="${result.forecast.forecastday[1].day.condition.icon}" style="width: 45px;">`;
   imgDay3.innerHTML = `<img src="${result.forecast.forecastday[2].day.condition.icon}" style="width: 45px;">`;
@@ -49,8 +50,6 @@ async function getForecast (temp){
   stat2day.innerHTML = result.forecast.forecastday[1].day.condition.text;
   stat3day.innerHTML = result.forecast.forecastday[2].day.condition.text;
 }
-// getLocation ();
-getForecast ('cairo');
 
 function locationName(name){
   getForecast(name);
@@ -62,18 +61,6 @@ function locationName(name){
 
 
 /*-----------------------------------------------------------------------------------*/
-
-
-
-
-
-
-
-
-
-
-
-
 /*-----------------------------------------------------------------------------------*/
 
 var todayN = document.getElementById('todayN');
@@ -100,6 +87,3 @@ var day3Name = document.getElementById('dayThreeName');
   dM.innerHTML = new Date().getDate() + mName;
   
 })();
-
-
-
