@@ -1,0 +1,120 @@
+body {
+  color: #bfc1c8;
+  font-family: "Roboto", "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  background: #1e202b;
+}
+:root{
+  --main-color:#009ad8;
+  --main-background-color: #1e202b;
+}
+.mainColor{
+  color: #009ad8;
+}
+.mainBackground{
+  background-color: #1e202b;
+}
+.secBackground{
+  background-color: #323544;
+}
+.thirdBackground{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.forthBackground{
+  background-color: #262936;
+}
+nav .logo img{
+  width: 65px;
+  height: 36px;
+}
+nav .logo .txt h5{
+  margin-bottom: 2px;
+  font-weight: 600;
+  font-size: 17px;
+}
+nav .logo .txt p{
+  font-size: 11px;
+  margin-bottom: 0;
+  color: #bfc1c8;
+}
+nav ul li a{
+  color: white !important;
+  text-decoration: none;
+  font-weight: 500 !important;
+  padding: 4px 25px !important;
+  transition: .3s;
+  border-radius: 14px !important;
+  border: 2px solid transparent !important;
+}
+nav ul li a:hover,
+nav ul li a.active{
+  color: var(--main-color) !important;
+  border: 2px solid var(--main-color) !important;
+  padding: 4px 25px !important;
+  border-radius: 14px !important;
+}
+section{
+  background-image: url(../imgs/banner.png);
+  background-repeat: no-repeat;
+  padding: 100px 0;
+}
+.find-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+  padding: 10px 40px;
+  background-color: var(--main-color);
+}
+ .find-btn:hover{
+  background-color: var(--main-color);
+}
+ input:focus{
+  background-color: var(--main-background-color) !important;
+}
+ input::placeholder{
+  color: #bfc1c882 !important;
+  font-size: 14px;
+}
+section .content .temp h2{
+  color: white;
+  font-size: 80px;
+  font-weight: bold;
+  margin-right: 40px;
+}
+section .content .temp h2 #degV{
+   font-size: 90px;
+
+}
+section .content .info div{
+   font-size: 15px;
+}
+footer .social{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+footer .social i{
+  color: var(--main-color);
+  font-size: 20px;
+  background-color: var(--main-background-color);
+  padding: 16px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .3s;
+}
+footer .social a{
+  text-decoration: none;
+}
+footer .social i:hover{
+  color: white;
+  background-color: var(--main-color);
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-md px-lg-5 px-4">
+        <a class="navbar-brand logo d-flex gap-lg-3 align-items-center" href="#">
+          <img src="imgs/logo.png" alt="">
+          <div class="txt">
+            <h5 class="text-white">Weather</h5>
+            <p>tagline goes here</p>
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="fa-solid fa-bars mainColor fs-3"></i>
+        </button>
+        <div class="collapse navbar-collapse mt-4 mt-lg-0" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-4">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Live Cameras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Photos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section>
+      <div class="container-md px-lg-5 px-3">
+        <div class="form d-flex position-relative mx-lg-3">
+          <input type="text" oninput="locationName(this.value)" id="locationName" class="form-control mainBackground border-0 py-3 rounded-5 shadow-none text-white ps-4" placeholder="Find your Location...">
+        <button class="find-btn btn btn-primary rounded-5" id="findBtn">Find</button>
+        </div>
+      </div>
+      <div class="content mt-5">
+        <div class="container-md px-lg-5 px-3">
+          <div class="row mx-lg-3">
+            <div class="col-lg-4 secBackground rounded-start-2 p-0">
+              <div class="time d-flex justify-content-between p-2 px-4 thirdBackground">
+                <span id="todayN"></span>
+                <span id="dM">1August</span>
+              </div>
+              <div class="temp p-3 fs-5 fw-medium px-4">
+                <span class="my-3 d-block" id="cityName"></span>
+                <div class="deg d-flex flex-wrap align-items-center">
+                  <h2><span id="degV"></span><sup>o</sup><span>c</span></h2>
+                  <div id="todayImg"></div>
+                </div>
+                <span class="d-block mainColor fs-6" id="statToday"></span>
+                <div class="info d-flex flex-wrap gap-3 my-3">
+                  <div><i class="fa-solid fa-umbrella fa-fw me-1"></i>20%</div>
+                  <div><i class="fa-solid fa-wind fa-fw me-1"></i>18km/h</div>
+                  <div><i class="fa-solid fa-compass fa-fw me-1"></i>East</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 forthBackground p-0">
+              <div class="time text-center p-2 mainBackground">
+                <span id="dayTwoName"></span>
+              </div>
+              <div class="temp p-3 fs-5 fw-medium text-center py-5">
+                <div id="imgDay2"></div>
+                <h4 class="fw-semibold text-white text-center mt-4"><span id="max2deg"></span><sup>o</sup><span>c</span></h5>
+                <h6 class="fw-semiboldtext-center"><span id="min2deg"></span><sup>o</sup><span>c</span></h6>
+                <span class="d-block mainColor fs-6 text-center mt-3" id="stat2day"></span>               
+              </div>
+            </div>           
+            <div class="col-lg-4 secBackground rounded-end-2 p-0">
+              <div class="time text-center p-2 thirdBackground">
+                <span id="dayThreeName"></span>
+              </div>
+              <div class="temp p-3 fs-5 fw-medium text-center py-5">
+                <div id="imgDay3"></div>
+                <h4 class="fw-semibold text-white text-center mt-4"><span id="max3deg"></span><sup>o</sup><span>c</span></h5>
+                <h6 class="fw-semiboldtext-center"><span id="min3deg"></span><sup>o</sup><span>c</span></h6>
+                <span class="d-block mainColor fs-6 text-center mt-3" id="stat3day"></span>               
+              </div>
+            </div>           
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="secBackground py-4 forthBackground">
+      <div class="container px-lg-5 px-3">
+        <div class="social">
+          <a href=""><i class="fa-brands fa-facebook"></i></a>
+          <a href=""><i class="fa-brands fa-youtube"></i></a>
+          <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          <a href=""><i class="fa-brands fa-github"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>                 
+        </div>
+        <div class="form d-flex position-relative mx-lg-3">
+          <input type="text" class="form-control mainBackground border-0 py-3 rounded-5 shadow-none text-white ps-4" placeholder="Enter Your Email To Subscribe...">
+        <button class="find-btn btn btn-primary rounded-5 px-3">Subscribe</button>
+        </div>
+        <h6 class="text-center mt-5">Developed by Abdo Atef ❤❤</h6>
+        <p class="text-center">Copyright 2014 &copy; Company name. Designed by Themezy. All rights reserved</p>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
