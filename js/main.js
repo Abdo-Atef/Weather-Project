@@ -84,7 +84,6 @@ var day3N= document.getElementById('dayThreeName');
   day3N.innerHTML = day3Name;
 })();
 
-
 (function getMonthName(){
   const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const x = new Date();
