@@ -63,22 +63,27 @@ function locationName(name){
 /*-----------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------*/
 
-var todayN = document.getElementById('todayN');
 var dM = document.getElementById('dM');
 var todayN = document.getElementById('todayN');
-var day2Name = document.getElementById('dayTwoName');
-var day3Name = document.getElementById('dayThreeName');
+var day2N = document.getElementById('dayTwoName');
+var day3N= document.getElementById('dayThreeName');
 
-(function getDayName(){
-  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+(function getDayName() {
+  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const d = new Date();
+
   let day1Name = weekday[d.getDay()];
   todayN.innerHTML = day1Name;
-  let dayaName = weekday[d.getDay()+1];
-  day2Name.innerHTML = dayaName;
-  let daybName = weekday[d.getDay()+2];
-  day3Name.innerHTML = daybName;
+
+  let day2Index = (d.getDay() + 1) % 7;
+  let day2Name = weekday[day2Index];
+  day2N.innerHTML = day2Name;
+
+  let day3Index = (d.getDay() + 2) % 7;
+  let day3Name = weekday[day3Index];
+  day3N.innerHTML = day3Name;
 })();
+
 
 (function getMonthName(){
   const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
