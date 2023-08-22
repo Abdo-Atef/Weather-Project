@@ -48,8 +48,8 @@
     <section>
       <div class="container-md px-lg-5 px-3">
         <div class="form d-flex position-relative mx-lg-3">
-          <input type="text" oninput="locationName(this.value)" id="locationName" class="form-control mainBackground border-0 py-3 rounded-5 shadow-none text-white ps-4" placeholder="Find your Location...">
-        <button class="find-btn btn btn-primary rounded-5" id="findBtn">Find</button>
+          <input type="text"id="locationName" class="form-control mainBackground border-0 py-3 rounded-5 shadow-none text-white ps-4" placeholder="Find your Location...">
+        <!-- <button class="find-btn btn btn-primary rounded-5" id="findBtn">Find</button> -->
         </div>
       </div>
       <div class="content mt-5">
@@ -57,43 +57,43 @@
           <div class="row mx-lg-3">
             <div class="col-lg-4 secBackground rounded-start-2 p-0">
               <div class="time d-flex justify-content-between p-2 px-4 thirdBackground">
-                <span id="todayN"></span>
+                <span class="dayName"></span>
                 <span id="dM">1August</span>
               </div>
               <div class="temp p-3 fs-5 fw-medium px-4">
                 <span class="my-3 d-block" id="cityName"></span>
                 <div class="deg d-flex flex-wrap align-items-center">
                   <h2><span id="degV"></span><sup>o</sup><span>c</span></h2>
-                  <div id="todayImg"></div>
+                  <img id="todayImg" style="width: 90px;height: 90px;"></img>
                 </div>
                 <span class="d-block mainColor fs-6" id="statToday"></span>
                 <div class="info d-flex flex-wrap gap-3 my-3">
-                  <div><i class="fa-solid fa-umbrella fa-fw me-1"></i>20%</div>
-                  <div><i class="fa-solid fa-wind fa-fw me-1"></i>18km/h</div>
-                  <div><i class="fa-solid fa-compass fa-fw me-1"></i>East</div>
+                  <div><i class="fa-solid fa-cloud-showers-heavy fa-fw me-1"></i><span id="rainProp"></span></div>
+                  <div><i class="fa-solid fa-wind fa-fw me-1"></i><span id="wind_kph"></span></div>
+                  <div><i class="fa-solid fa-compass fa-fw me-1"></i><span id="windDir"></span></div>
                 </div>
               </div>
             </div>
             <div class="col-lg-4 forthBackground p-0">
               <div class="time text-center p-2 mainBackground">
-                <span id="dayTwoName"></span>
+                <span class="dayName"></span>
               </div>
               <div class="temp p-3 fs-5 fw-medium text-center py-5">
-                <div id="imgDay2"></div>
-                <h4 class="fw-semibold text-white text-center mt-4"><span id="max2deg"></span><sup>o</sup><span>c</span></h5>
-                <h6 class="fw-semiboldtext-center"><span id="min2deg"></span><sup>o</sup><span>c</span></h6>
-                <span class="d-block mainColor fs-6 text-center mt-3" id="stat2day"></span>               
+                <img class="nextDayImg" style="width: 55px;"></img>
+                <h4 class="fw-semibold text-white text-center mt-4"><span class="maxDeg"></span><sup>o</sup><span>c</span></h5>
+                <h6 class="fw-semiboldtext-center"><span class="minDeg"></span><sup>o</sup><span>c</span></h6>
+                <span class="nextDayStat d-block mainColor fs-6 text-center mt-3"></span>               
               </div>
             </div>           
             <div class="col-lg-4 secBackground rounded-end-2 p-0">
               <div class="time text-center p-2 thirdBackground">
-                <span id="dayThreeName"></span>
+                <span class="dayName"></span>
               </div>
               <div class="temp p-3 fs-5 fw-medium text-center py-5">
-                <div id="imgDay3"></div>
-                <h4 class="fw-semibold text-white text-center mt-4"><span id="max3deg"></span><sup>o</sup><span>c</span></h5>
-                <h6 class="fw-semiboldtext-center"><span id="min3deg"></span><sup>o</sup><span>c</span></h6>
-                <span class="d-block mainColor fs-6 text-center mt-3" id="stat3day"></span>               
+                <img class="nextDayImg" style="width: 55px;"></img>
+                <h4 class="fw-semibold text-white text-center mt-4"><span class="maxDeg"></span><sup>o</sup><span>c</span></h5>
+                <h6 class="fw-semiboldtext-center"><span class="minDeg"></span><sup>o</sup><span>c</span></h6>
+                <span class="nextDayStat d-block mainColor fs-6 text-center mt-3"></span>               
               </div>
             </div>           
           </div>

@@ -1,93 +1,91 @@
 var cityName = document.getElementById('cityName');
 var degV = document.getElementById('degV');
+var rainProp = document.getElementById('rainProp');
+var wind_kph = document.getElementById('wind_kph');
+var windDir = document.getElementById('windDir');
 var locationN = document.getElementById('locationName');
-var findBtn = document.getElementById('findBtn');
 var todayImg = document.getElementById('todayImg');
-var imgDay2 = document.getElementById('imgDay2');
-var imgDay3 = document.getElementById('imgDay3');
+var nextDayImg = document.getElementsByClassName('nextDayImg');
 var statToday = document.getElementById('statToday');
-var stat2day = document.getElementById('stat2day');
-var stat3day = document.getElementById('stat3day');
-var max2deg = document.getElementById('max2deg');
-var max3deg = document.getElementById('max3deg');
-var min2deg = document.getElementById('min2deg');
-var min3deg = document.getElementById('min3deg');
+var nextDayStat = document.getElementsByClassName('nextDayStat');
+var maxDeg = document.getElementsByClassName('maxDeg');
+var minDeg = document.getElementsByClassName('minDeg');
+var dM = document.getElementById('dM');
+var dayName = document.getElementsByClassName('dayName');
 
 (function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
     if(navigator.geolocation.getCurrentPosition(showPosition) == null){
-      getForecast('cairo')
+      displayForecast('cairo')
     }
   }
 })();
-
 function showPosition(position) {
   latitude=position.coords.latitude;
   longitude=position.coords.longitude;
   // console.log("Latitude: " + latitude)
   // console.log("Longitude: " + longitude);
   position = `${latitude},${longitude}`
-  getForecast(position);
+  displayForecast(position);
 }
 
-async function getForecast (temp){
-
-  var apiResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=7ae97b0d3729464ab72143940230208%20&q=${temp}&days=3&aqi=no&alerts=no`);
+async function getForecast (p){
+  var apiResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=7ae97b0d3729464ab72143940230208%20&q=${p}&days=3&aqi=no&alerts=no`);
   var result = await apiResponse.json();
-  // console.log(result);
-  // console.log(result.current);
-  cityName.innerHTML = `${result.location.country} - ${result.location.region} - ${result.location.name}`;
-  todayImg.innerHTML = `<img id="todayImg" src="${result.current.condition.icon}" style="width: 90px;height: 90px;">`;
-  imgDay2.innerHTML = `<img src="${result.forecast.forecastday[1].day.condition.icon}" style="width: 45px;">`;
-  imgDay3.innerHTML = `<img src="${result.forecast.forecastday[2].day.condition.icon}" style="width: 45px;">`;
-  degV.innerHTML = result.current.temp_c;
-  max2deg.innerHTML = result.forecast.forecastday[1].day.maxtemp_c;
-  min2deg.innerHTML = result.forecast.forecastday[1].day.mintemp_c;
-  max3deg.innerHTML = result.forecast.forecastday[2].day.maxtemp_c;
-  min3deg.innerHTML = result.forecast.forecastday[2].day.mintemp_c;
-  statToday.innerHTML = result.current.condition.text;
-  stat2day.innerHTML = result.forecast.forecastday[1].day.condition.text;
-  stat3day.innerHTML = result.forecast.forecastday[2].day.condition.text;
+  return result;
+}
+async function displayForecast(place){
+  let result = await getForecast(place);
+  if(!result.error){
+    cityName.innerHTML = `${result.location.country} - ${result.location.region} - ${result.location.name}`;
+    todayImg.setAttribute('src',`${result.current.condition.icon}`);
+    degV.innerHTML = result.current.temp_c;
+    rainProp.innerHTML = (result.forecast.forecastday[0].day.daily_chance_of_rain+'%');
+    wind_kph.innerHTML = result.current.wind_kph +" km/h" ;
+    windDir.innerHTML = result.current.wind_dir;
+    statToday.innerHTML = result.current.condition.text;
+    for(let i=0;i<2;i++){
+      maxDeg[i].innerHTML = result.forecast.forecastday[i+1].day.maxtemp_c;
+      minDeg[i].innerHTML = result.forecast.forecastday[i+1].day.mintemp_c;
+      nextDayStat[i].innerHTML = result.forecast.forecastday[i+1].day.condition.text;
+      nextDayImg[i].setAttribute('src',`${result.forecast.forecastday[i+1].day.condition.icon}`);
+    }
+    for (let i = 0; i <= 2; i++) {
+      dayName[i].innerHTML = new Date(result.forecast.forecastday[i].date).toLocaleDateString('en-us',{'weekday':'long'});   
+    }
+    let monthName = new Date().toLocaleDateString('en-us',{'month':'long'})
+    dM.innerHTML = new Date().getDate() + monthName;
+  }
 }
 
-function locationName(name){
-  getForecast(name);
-}
-
-// findBtn.addEventListener('click', function(){
-//    getForecast (locationName.value);
-// });
-
+locationN.addEventListener('keyup',function(){
+  displayForecast(locationN.value);
+})
 
 /*-----------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------*/
 
-var dM = document.getElementById('dM');
-var todayN = document.getElementById('todayN');
-var day2N = document.getElementById('dayTwoName');
-var day3N= document.getElementById('dayThreeName');
+// (function getDayName() {
+//   const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+//   const d = new Date();
 
-(function getDayName() {
-  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const d = new Date();
+//   let day1Name = weekday[d.getDay()];
+//   todayN.innerHTML = day1Name;
 
-  let day1Name = weekday[d.getDay()];
-  todayN.innerHTML = day1Name;
+//   let day2Index = (d.getDay() + 1) % 7;
+//   let day2Name = weekday[day2Index];
+//   day2N.innerHTML = day2Name;
 
-  let day2Index = (d.getDay() + 1) % 7;
-  let day2Name = weekday[day2Index];
-  day2N.innerHTML = day2Name;
+//   let day3Index = (d.getDay() + 2) % 7;
+//   let day3Name = weekday[day3Index];
+//   day3N.innerHTML = day3Name;
+// })();
 
-  let day3Index = (d.getDay() + 2) % 7;
-  let day3Name = weekday[day3Index];
-  day3N.innerHTML = day3Name;
-})();
-
-(function getMonthName(){
-  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const x = new Date();
-  let mName = month[x.getMonth()];
-  dM.innerHTML = new Date().getDate() + mName;
+// (function getMonthName(){
+//   const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//   const x = new Date();
+//   let mName = month[x.getMonth()];
+//   dM.innerHTML = new Date().getDate() + mName;
   
-})();
+// })();
